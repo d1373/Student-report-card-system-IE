@@ -10,17 +10,16 @@ struct report r[100];
 int input();
 struct report teacher();
 void student();
-/*define variable*/
-int i,j,k,n,type;
+int i,j,k,n;
 void main(){
 printf("########################################################\n"); //default print snippet for the start of the funtions
 printf("############ STUDENT REPORT CARD SYSTEM  ###############\n");
 printf("########################################################\n");
 teacher();
+printf("Do you want to view the result\n"); 
 input();
 }
 int input(){
-printf("Do you want to view the result\n"); //repeat the whole program to switch user
 printf("Press 1 to view the result and anything else to stop to stop\n");
 scanf("%d",&j);
 switch (j) {
@@ -85,5 +84,6 @@ printf("Percentage - %f\n",r[k-1].percentage);
 printf("\n");
 printf("Grade - %c\n",r[k-1].grade);
 printf("\n");
+printf("Check the result of another student\n");
 input();
 }
