@@ -1,46 +1,89 @@
-//inbuild library
 #include <stdio.h>
 #include <string.h>
-//functions
+struct report {
+int rollno;
+char name[200];
+float physics,chemistry,maths,pps,percentage;
+char grade;
+};
+struct report r[100];
 int input();
-void teacher();
+struct report teacher();
 void student();
-void report_display();
-void calculation(int ma,int ch,int phy,int pro);
 /*define variable*/
-int i,j,k,n,type,percentage,grade;
-char name[100];
-int maths[100],chem[100],physice[100],pps[100];
-int ma,ch,phy,pro;
+int i,j,k,n,type;
 void main(){
-for (j=1;j==1;i++) { //a repeat mechanism that would repeat the main loop until the user pressed something other than 1
-if (j == 1){
-input();
-if (type == 1)  //check the value of input and then call respcective funtions
-	teacher();
-if (type == 2)
-	student();
-printf("Do you want to restart as a different person\n"); //repeat the whole program to switch user
-printf("Press 1 to restart and anything else to stop to stop\n");
-scanf("%d",&j);
-}
-}
-}
-int input(){
 printf("########################################################\n"); //default print snippet for the start of the funtions
 printf("############ STUDENT REPORT CARD SYSTEM  ###############\n");
 printf("########################################################\n");
-printf("Are you a teacher or student\n"); //Ask whether the user is a teacher or student and the proceed accordingly
-printf("Type 1 if teacher or 2 if student\n");
-scanf("%d",&type);
-return type;
+teacher();
+input();
 }
-void teacher(){
-printf("I am a teacher");
+int input(){
+printf("Do you want to view the result\n"); //repeat the whole program to switch user
+printf("Press 1 to view the result and anything else to stop to stop\n");
+scanf("%d",&j);
+switch (j) {
+	case 1:
+		student();
+		break;
+	default:
+		break;
+}
+}
+struct report teacher(){
+printf("Enter the number of students in your class - ");
+scanf("%d",&n);
+for (i=0;i<n;i++) {
+r[i].rollno=i+1;
+printf("Enter the NAME of roll number %d - ",r[i].rollno);
+scanf("%s", r[i].name);
+printf("Enter the Marks of roll number %d out of 100\n",r[i].rollno);
+printf("Physics = ");
+scanf("%f",&r[i].physics);
+printf("Chemistry = ");
+scanf("%f",&r[i].chemistry);
+printf("Maths = ");
+scanf("%f",&r[i].maths);
+printf("PPS = ");
+scanf("%f",&r[i].pps);
+r[i].percentage=(r[i].physics+r[i].maths+r[i].chemistry+r[i].pps)/4;
+if (r[i].percentage >= 90.00)
+	r[i].grade = 'A';
+else if (r[i].percentage >= 80.00 && r[i].percentage < 90.00)
+	r[i].grade = 'B';
+else if (r[i].percentage >= 70.00 && r[i].percentage < 80.00)
+	r[i].grade = 'C';
+else if (r[i].percentage < 70.00)
+	r[i].grade = 'D';
+printf("\n");
+printf("\n");
+}
+return r[100];
 }
 void student(){
-printf("I am a student");
-}
-void calculation(){
-printf("test");
+printf("\n");
+printf("\n");
+printf("\n");
+printf("Enter your details to display result\n");
+printf("roll no = ");
+scanf("%d",&k);
+/*k=k-1;*/
+printf("########################################################\n");
+printf("\t REPORT CARD \t\n");
+printf("########################################################\n");
+printf("Rollno - %d\n",k);
+printf("\n");
+printf("Name - %s\n",r[k-1].name);
+printf("\n");
+printf("Maths - %f\n",r[k-1].maths);
+printf("Chemistry - %f\n",r[k-1].chemistry);
+printf("Physics - %f\n",r[k-1].physics);
+printf("PPS - %f\n",r[k-1].pps);
+printf("\n");
+printf("Percentage - %f\n",r[k-1].percentage);
+printf("\n");
+printf("Grade - %c\n",r[k-1].grade);
+printf("\n");
+input();
 }
