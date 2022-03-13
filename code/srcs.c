@@ -7,7 +7,7 @@ float physics,chemistry,maths,pps,percentage;
 char grade;
 };
 struct report r[100];
-int input();
+void input();
 struct report teacher();
 void student();
 int i,j,k,n;
@@ -16,10 +16,10 @@ printf("########################################################\n"); //default 
 printf("############ STUDENT REPORT CARD SYSTEM  ###############\n");
 printf("########################################################\n");
 teacher();
-printf("Do you want to view the result\n"); 
+printf("Do you want to view the result?\n"); 
 input();
 }
-int input(){
+void input(){
 printf("Press 1 to view the result and anything else to stop to stop\n");
 scanf("%d",&j);
 switch (j) {
@@ -58,7 +58,7 @@ else if (r[i].percentage < 70.00)
 printf("\n");
 printf("\n");
 }
-return r[100];
+return r[n];
 }
 void student(){
 printf("\n");
@@ -69,7 +69,7 @@ printf("roll no = ");
 scanf("%d",&k);
 /*k=k-1;*/
 printf("########################################################\n");
-printf("\t REPORT CARD \t\n");
+printf("\t \tREPORT CARD \t\n");
 printf("########################################################\n");
 printf("Rollno - %d\n",k);
 printf("\n");
