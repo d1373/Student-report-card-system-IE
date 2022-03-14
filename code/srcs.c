@@ -10,17 +10,22 @@ struct report r[100];
 void input();
 struct report teacher();
 void student();
-int i,j,k,n;
+int number_of_students();
+int i,j,k,n,rank1,rank2,rank3;
+float rank[100];
 void main(){
 printf("########################################################\n"); //default print snippet for the start of the funtions
 printf("############ STUDENT REPORT CARD SYSTEM  ###############\n");
 printf("########################################################\n");
+number_of_students();
 teacher();
-printf("Do you want to view the result?\n"); 
-input();
+printf("\n");
+printf("\n");
+printf("\n");
+student();
 }
 void input(){
-printf("Press 1 to view the result and anything else to stop to stop\n");
+printf("Press 1 to view the result and anything else to stop\n");
 scanf("%d",&j);
 switch (j) {
 	case 1:
@@ -30,9 +35,12 @@ switch (j) {
 		break;
 }
 }
-struct report teacher(){
+int number_of_students(){
 printf("Enter the number of students in your class - ");
 scanf("%d",&n);
+return n;
+}
+struct report teacher(){
 for (i=0;i<n;i++) {
 r[i].rollno=i+1;
 printf("Enter the NAME of roll number %d - ",r[i].rollno);
@@ -64,12 +72,37 @@ void student(){
 printf("\n");
 printf("\n");
 printf("\n");
+for (i=0;i<n;i++){
+r[i].percentage=rank[i];
+}
+rank1=rank2=rank3=0;
+for (i=0;i<n;i++){
+if (rank[i]>rank1){
+rank2=rank1;
+rank1=rank[i];
+}
+else if (rank[i]>rank2){
+rank3=rank2;
+rank2=rank[i];
+}
+else if (rank[i]>rank3){
+rank3=rank[i];
+}
+}
 printf("Enter your details to display result\n");
+for (j=0;j<10;j++){
 printf("roll no = ");
 scanf("%d",&k);
+if (k<=0 || k>n){
+printf("Enter the correct roll no\n");
+}
+else  {
+	j=11;
+}
+}
 /*k=k-1;*/
 printf("########################################################\n");
-printf("\t \tREPORT CARD \t\n");
+printf("\t \t\tREPORT CARD \t\n");
 printf("########################################################\n");
 printf("Rollno - %d\n",k);
 printf("\n");
@@ -83,6 +116,16 @@ printf("\n");
 printf("Percentage - %f\n",r[k-1].percentage);
 printf("\n");
 printf("Grade - %c\n",r[k-1].grade);
+printf("\n");
+if (rank1 == r[k-1].percentage){
+printf("Rank - 1");
+}
+else if (rank2 == r[k-1].percentage){
+printf("Rank - 2");
+}
+else if (rank3 == r[k-1].percentage){
+printf("Rank - 3");
+}
 printf("\n");
 printf("Check the result of another student\n");
 input();
