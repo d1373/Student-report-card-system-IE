@@ -11,8 +11,8 @@ void input();
 struct report teacher();
 void student();
 int number_of_students();
-int i,j,k,n,rank1,rank2,rank3;
-float rank[100];
+int i,j,k,n;
+float rank1,rank2;
 void main(){
 printf("########################################################\n"); //default print snippet for the start of the funtions
 printf("############ STUDENT REPORT CARD SYSTEM  ###############\n");
@@ -72,21 +72,14 @@ void student(){
 printf("\n");
 printf("\n");
 printf("\n");
+rank1=rank2=0;
 for (i=0;i<n;i++){
-r[i].percentage=rank[i];
-}
-rank1=rank2=rank3=0;
-for (i=0;i<n;i++){
-if (rank[i]>rank1){
+if (r[i].percentage>rank1){
 rank2=rank1;
-rank1=rank[i];
+rank1=r[i].percentage;
 }
-else if (rank[i]>rank2){
-rank3=rank2;
-rank2=rank[i];
-}
-else if (rank[i]>rank3){
-rank3=rank[i];
+else if (r[i].percentage>rank2){
+rank2=r[i].percentage;
 }
 }
 printf("Enter your details to display result\n");
@@ -122,9 +115,6 @@ printf("Rank - 1");
 }
 else if (rank2 == r[k-1].percentage){
 printf("Rank - 2");
-}
-else if (rank3 == r[k-1].percentage){
-printf("Rank - 3");
 }
 printf("\n");
 printf("Check the result of another student\n");
